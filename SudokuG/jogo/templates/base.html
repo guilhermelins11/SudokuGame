@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Sudoku Online 🧩</h1>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- O conteúdo da página será inserido aqui -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sudoku Game</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Sudoku - In Live</h1>
+
+    <!-- Formulário para iniciar o jogo -->
+    <form id="startGameForm" style="text-align: center;">
+        {% csrf_token %}
+        <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
+        <button type="submit">Iniciar Jogo</button>
+    </form>
+
+    <!-- Tabuleiro de Sudoku (inicia oculto) -->
+    <div id="game-container" style="display: none;">
+        <form id="sudokuForm" method="post" style="text-align: center;">
+            <table>
+                {% for row in board %}
+                    <tr>
+                        {% for cell in row %}
+                            <td>
+                                {% if cell == 0 %}
+                                    <input type="text" name="cell" maxlength="1">
+                                {% else %}
+                                    <input type="text" value="{{ cell }}" class="fixed" readonly>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button type="submit">Finalizar Jogo</button>
+        </form>
+    </div>
+
+    <!-- Pop-up do Ranking -->
+    <div id="popup-ranking" style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -50%);
+                background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+        <h2>Seu Resultado 🎉</h2>
+        <p id="ranking-info"></p>
+        <h3>Ranking Geral 🏆</h3>
+        <ul id="ranking-list"></ul>
+        <h3>Suas Partidas Anteriores 🕒</h3>
+        <ul id="user-history"></ul>
+        <button onclick="fecharRanking()">Fechar</button>
+    </div>
+
+    <script>
+    document.getElementById("startGameForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede recarregamento da página
+        document.getElementById("game-container").style.display = "block"; // Mostra o jogo
+        this.style.display = "none"; // Esconde o formulário de nome
+    });
+    
+    document.getElementById("sudokuForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nome = document.getElementById("nome").value;
+
+        // Capturar as respostas do usuário e calcular pontuação corretamente
+        let respostas = document.querySelectorAll("input[name='cell']");
+        let pontuacao = 0;
+
+        respostas.forEach(input => {
+            if (input.value !== "" && input.value === input.getAttribute("data-correct")) {
+                pontuacao += 10; // Adiciona pontos por resposta correta
+            }
+        });
+
+        fetch("{% url 'ranking' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: new URLSearchParams({ nome, pontuacao })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("ranking-info").innerText =
+                `${nome}, sua pontuação foi ${pontuacao}. Você está em ${data.posicao}º lugar!`;
+
+            // Atualiza o ranking geral corretamente
+            const rankingList = document.getElementById("ranking-list");
+            rankingList.innerHTML = ""; // Limpa a lista anterior
+            data.jogadores.forEach((jogador, index) => {
+                const item = document.createElement("li");
+                item.innerText = `${index + 1}º - ${jogador.nome} (${jogador.pontuacao} pontos)`;
+                rankingList.appendChild(item);
+            });
+
+            // Atualiza o histórico de partidas do usuário
+            const userHistory = document.getElementById("user-history");
+            userHistory.innerHTML = ""; // Limpa histórico anterior
+            data.historico.forEach(record => {
+                const item = document.createElement("li");
+                item.innerText = `Pontuação: ${record.pontuacao}`;
+                userHistory.appendChild(item);
+            });
+
+            document.getElementById("popup-ranking").style.display = "block"; // Exibe pop-up corretamente
+        })
+        .catch(error => console.error("Erro ao enviar dados:", error));
+    });
+
+    function fecharRanking() {
+        document.getElementById("popup-ranking").style.display = "none";
+    }
+</script>
+</body>
+</html>

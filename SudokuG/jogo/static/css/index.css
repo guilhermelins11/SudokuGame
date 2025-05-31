@@ -1,0 +1,105 @@
+/* Estilo global */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f7f7f7; /* Cinza muito claro, neutro */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container principal */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #444; /* Cinza escuro, neutro */
+}
+
+/* Tabuleiro de Sudoku */
+table {
+    border-collapse: separate;
+    border-spacing: 5px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* Células do tabuleiro */
+td {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+    background: #e3e3e3; /* Cinza neutro */
+    color: #333;
+    border-radius: 5px;
+}
+
+/* Delimitação das seções do Sudoku */
+.sudoku-board td:nth-child(3n) {
+    border-right: 3px solid #bbb;
+}
+
+.sudoku-board tr:nth-child(3n) td {
+    border-bottom: 3px solid #bbb;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    background: #e7e7e7; /* Tom neutro bem discreto */
+    border: none;
+    outline: none;
+}
+
+/* Células fixas */
+.fixed {
+    background: #b7c4cf; /* Azul acinzentado sofisticado */
+    font-weight: bold;
+}
+
+/* Botões com tom neutro discreto */
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #000000; /* Cinza sofisticado */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: #ff0707; /* Cinza levemente mais escuro */
+}
+
+#user-history {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    background: #ffffff; /* Cor igual ao sistema */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    border: 2px solid #ccc;
+    max-height: 300px; /* Limita altura para evitar cortes */
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+}
