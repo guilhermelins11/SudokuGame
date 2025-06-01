@@ -1,4 +1,4 @@
-### 🧩 **SudokuG - Jogo de Sudoku Dinâmico**
+### 🧩 **SudokuG**
 SudokuG é um sistema interativo que permite **jogar Sudoku de forma fluida e intuitiva**, armazenando pontuações, rankings e histórico de partidas. Desenvolvido para uma **experiência imersiva**, ele oferece um **sistema de pontuação automatizado** e integração com **banco de dados** para registro de jogadores.
 
 ---
@@ -10,31 +10,32 @@ SudokuG é um sistema interativo que permite **jogar Sudoku de forma fluida e in
 ✅ **Histórico de partidas** mostrando pontuações anteriores  
 ✅ **Interface moderna com design elegante**  
 
-Com esses recursos, SudokuG oferece uma experiência **imersiva e interativa**, garantindo diversão e um **sistema inteligente de ranking**.
 
----
 
 ### 🛠️ **Tecnologias Utilizadas**
-🔹 **Django (Python)** → Backend robusto e escalável  
-🔹 **HTML5 + CSS3 + JavaScript** → Interface dinâmica e interativa  
-🔹 **Banco de Dados SQLite/MySQL** → Armazena usuários, pontuações e ranking  
+🔹 ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=flat-square&logo=django&logoColor=white)
+
+🔹 [![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white)](https://img.shields.io/badge/HTML5-239120?style=flat-square&logo=HTML5&logoColor=white) + ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat-square&logo=css3&logoColor=white) + ![JavaScript](https://img.shields.io/badge/Javascript-%23323330.svg?style=flat-square&logo=javascript&logoColor=%23F7DF1E)
+
+🔹![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?style=flat-square&logo=mysql&logoColor=white) / ![SQLite](https://img.shields.io/badge/SQLlite-%2307405e.svg?style=flat-square&logo=SQLlite&logoColor=white) 
 
 ---
 
-### ⚙️ **Instruções de Instalação**
-#### 📌 **Pré-Requisitos**
-✔️ **Python ≥ 3.8**  
+## Instruções de Intalação
+### Pré Requisitos
+```bash
+✔️ Python ≥ 3.8
 Verifique com:  
-```sh
+
 python --version
-```  
-✔️ **Git ≥ 2.0.0**  
+
+✔️ Git ≥ 2.0.0  
 Verifique com:  
-```sh
+
 git --version
 ```  
 
-#### 🚀 **Passo a Passo**
+###  **Instruções de Uso**
 1️⃣ **Clone o repositório:**  
 ```sh
 git clone https://github.com/guilhermelins11/SudokuG.git
@@ -49,18 +50,18 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-**Observação:** Certifique-se de que todas as migrações do banco de dados estão aplicadas:  
+*Certifique-se de que todas as migrações do banco de dados estão aplicadas:* 
 ```sh
 python manage.py migrate
 ```
 
 ---
 
-### 📫 **Contato**
-🔗 **LinkedIn**  
-✉️ **Email**  
+## 📫 Contato
 
-Projeto desenvolvido por **Antony Guilherme** para **fins acadêmicos e de portfólio**, demonstrando habilidades em desenvolvimento web e lógica de programação. 🚀  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](http://linkedin.com/in/antony-lins-354b91290)  
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:contato.antonyguilherme@gmail.com)
 
-Se precisar de ajustes na descrição, só avisar! 😃🔥🎯  
-Agora é só commitar no seu GitHub! 🚀✨
+---
+
+Projeto desenvolvido por **Antony Guilherme** para **fins acadêmicos e de portfólio**.
